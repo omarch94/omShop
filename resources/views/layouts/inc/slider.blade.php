@@ -7,9 +7,19 @@
     <div class="carousel-inner test4 ">
       <div class="carousel-item active test4">
         <img src="{{asset('assets/images/pexel1.jpg')}}" class=" " alt="...">
+        <div class="carousel-caption">
+          <h2>Get Ready for Summer</h2>
+          <p>Explore our new summer arrivals.</p>
+          <a href="{{ url('home') }}" class="btn btn-primary">Shop Now</a>
+        </div>
       </div>
       <div class="carousel-item test4">
-        <img src="{{asset('assets/images/1671435513.jpg')}}" class=" " alt="...">
+        <img src="{{asset('assets/images/pexel1.jpg')}}" class=" " alt="...">
+        <div class="carousel-caption" style="margin: auto">
+          <h2>Upgrade Your Style</h2>
+          <p>Discover the latest fashion trends.</p>
+          <a href="{{ url('category') }}" class="btn btn-primary">Shop Now</a>
+        </div>
       </div>
       <div class="carousel-item test4">
         <img src="{{asset('assets/images/1671435678.jpg')}}" class=" " alt="...">

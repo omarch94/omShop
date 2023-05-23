@@ -11,6 +11,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\MailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +34,8 @@ Route::get('/home','Frontend\FrontendController@index');
 Route::get('category','Frontend\FrontendController@category');
 Route::get('view-category/{slug}','Frontend\FrontendController@viewcategory');
 Route::get('category/{cate_slug}/{prod_slug}','Frontend\FrontendController@productview');
+Route::get('product_details/{id}',[FrontendController::class,'product_details']);
+Route::get('product_search',[FrontendController::class,'product_search']);
 
 Auth::routes();
 
@@ -44,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('cart', 'Frontend\CartController@viewcart');
 Route::get('checkout', 'Frontend\CheckoutController@index');
 Route::post('place-order', 'Frontend\CheckoutController@placeorder');
+Route::get('send-mail', [CheckoutController::class, 'mailsend']);
+
 Route::get('my-orders', 'Frontend\UserController@index');
 Route::get('view-order/{id}','Frontend\UserController@view');
 Route::post('add-rating','Frontend\RatingController@add');
@@ -81,6 +88,10 @@ Route::get('wishlist', 'Frontend\WishlistController@index');
 
     Route::get('users', 'Admin\DashboardController@users');
     Route::get('view-user/{id}','Admin\DashboardController@viewUser');
+    Route::get('generate-pdf', [OrderController::class, 'generatePDF'])->name('generate-pdf');
+
+    // Route::get('send-email-pdf', [PDFController::class, 'index']);
+
     
 });
-
+// Route::get('send-mail', [MailController::class, 'index']);

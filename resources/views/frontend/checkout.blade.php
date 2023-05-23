@@ -20,10 +20,10 @@
                                 <label for="">First Name</label>
                                 <input type="text"  name="fname" value="{{Auth::user()->name}}" class="form-control" placeholder="Enter Your First Name">
                             </div>    
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <label for="">Last Name</label>
                             <input type="text"  name="lname" value="{{Auth::user()->lname}}" class="form-control" placeholder="Enter Your Last Name">
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 mt-3">
                             <label for="">Email</label>
                             <input type="text"  name="email"  value="{{Auth::user()->email}}" class="form-control" placeholder="Enter Your Email">

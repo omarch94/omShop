@@ -5,8 +5,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
     <div class="logo"><a href="#" class="simple-text logo-normal">
-        E-Shop
-      </a></div>
+OM.SHOP
+    </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item {{Request::is('') ? 'active':''}}  ">

@@ -1,13 +1,46 @@
 @extends('layouts.front')
 
 @section('title')
-        WELCOME to E-shop ya userrrrrr
+        WELCOME to OM.SHOP 
 @endsection
+{{-- <form action="{{url('product_search')}}" method="GET">
 
+    @csrf
+
+    <input style="width: 500px" type="text" name="search" placeholder="Search For Product ">
+
+    <input type="submit" value="search">
+</form> --}}
 
 @section('content')
         @include('layouts.inc.slider')      
  
+
+
+        <div class="py-5">
+            <div class="container">
+              <div class="row test2">
+                <h2 class="text-center mb-5"> Products</h2>
+                <div class="owl-carousel featured-carousel owl-theme">    
+                  @foreach ($products as $pr)
+                  <div class="item py-4">
+                    <div class="card product-card">
+                      <img class="card-img-top" src="{{asset('assets/uploads/products/'.$pr->image)}}" alt="{{$pr->name}}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{$pr->name}}</h5>
+                        <p class="card-text">{{$pr->description}}</p>
+                        <a href="{{url('product_details',$pr->id)}}" class="option1">
+                            Product Details
+                            </a>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+              </div>
+            </div>
+          </div> 
+          
         <div class="py-5">
             <div class="container">
                 <div class="row">
@@ -55,6 +88,8 @@
               </div>
             </div>
           </div>
+
+
 
 @endsection
 

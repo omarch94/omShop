@@ -12,7 +12,7 @@
                 @csrf
                 <input type="file" name="file" class="form-control">
                 <br>
-                <button class="btn btn-success">Import User Data</button>
+                <button class="btn btn-success">Import Product Data</button>
             </form>
         </div>
         <div class="card-body">

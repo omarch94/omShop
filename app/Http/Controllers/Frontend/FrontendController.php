@@ -15,7 +15,8 @@ class FrontendController extends Controller
         //take() make a delay time to give the user more time to see the image
         $featured_products=Product::where('trending','1')->take(15)->get();
         $trending_category=Category::where('popular','1')->take(15)->get();
-        return view('frontend.index',compact('featured_products','trending_category'));
+        $products=Product::all();
+        return view('frontend.index',compact('featured_products','trending_category','products'));
     }
     public function category()
     {
@@ -70,5 +71,20 @@ class FrontendController extends Controller
         }
      }
 
-    
+     public function product_details($id){
+
+        $products = Product::find($id);
+ 
+         return view('frontend.products.viewone',compact('products'));
+     }
+    //  public function product_search(Request $request)
+    //  {
+    //      $search_text = $request->search;
+     
+    //      $products = Product::where('name', 'LIKE', '%' . $search_text . '%')
+    //          ->orWhere('description', 'LIKE', '%' . $search_text . '%')
+    //          ->paginate(6);
+     
+    //      return view('frontend.index', compact('products'));
+    //  }
 }

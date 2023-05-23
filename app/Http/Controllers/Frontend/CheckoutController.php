@@ -11,6 +11,8 @@ use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+use App\Mail\DemoMail;
 
 class CheckoutController extends Controller
 {
@@ -25,7 +27,7 @@ class CheckoutController extends Controller
     $order->user_id=Auth::id();
     //$order->total_price=;
     $order->fname =$request->input('fname');
-    $order->lname =$request->input('lname');
+    // $order->lname =$request->input('lname');
     $order->email =$request->input('email');
     $order->phone =$request->input('phone');
     $order->address =$request->input('address');
@@ -58,13 +60,25 @@ class CheckoutController extends Controller
     {
         $user= User::where('id',Auth::id())->first();
         $user->name =$request->input('fname');
-        $user->lname =$request->input('lname');
+        // $user->lname =$request->input('lname');
         $user->phone =$request->input('phone');
         $user->address =$request->input('address');
         $user->update();
     }
     $cartitems = Cart::where('user_id',Auth::id())->get();
     Cart::destroy($cartitems);
+    
+    $mailData = [
+        'title' => 'Mail from omSHOP.com',
+        'body' => 'Dear Your order is placed successfully'
+    ];
+     
+    Mail::to($request->input('email'))->send(new DemoMail($mailData));
+       
+    dd("Email is sent successfully.");
     return redirect('/')->with('status',"Order placed successfully");
    }
+
+   
+  
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -24,5 +25,20 @@ class OrderController extends Controller
        $orders->status=$request->input('order_status');
        $orders->update();
        return redirect('orders')->with('status',"Order Updated Successfully"); 
+    }
+
+    public function generatePDF()
+    {
+        $orders = Order::get();
+  
+        $data = [
+            'title' => 'Welcome to OMSHOP.com',
+            'date' => date('m/d/Y'),
+            'orders' => $orders
+        ]; 
+            
+        $pdf = PDF::loadView('admin.myPDF', $data);
+     
+        return $pdf->download('OmSHOPORDERS.pdf');
     }
 }
